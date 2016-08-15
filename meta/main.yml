@@ -1,0 +1,15 @@
+galaxy_info:
+  author: jeffhung
+  description: Ansible playbook for create local YUM repository on CentOS Linux
+  license: BSD
+
+  platforms:
+  - name: EL
+    versions:
+     - 6
+
+  galaxy_tags:
+    - system
+
+dependencies: []
+

@@ -1,0 +1,5 @@
+---
+- name: reindex localrepo
+  command: createrepo {{localrepo_path}}
+  become: yes
+

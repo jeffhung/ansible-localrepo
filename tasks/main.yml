@@ -1,0 +1,23 @@
+---
+- name: Ensure libselinux-python is installed
+  yum:  state=present pkg=libselinux-python
+  when: "ansible_os_family == 'RedHat'"
+  become: yes
+
+- name: Ensure createrepo is installed
+  yum:  state=present pkg=createrepo
+  become: yes
+
+- name: Ensure localrepo directory exist
+  file: state=directory path={{localrepo_path}}
+  become: yes
+
+- name: Force reindex localrepo
+  command: /bin/true
+  notify: reindex localrepo
+- meta: flush_handlers
+
+- name: Ensure localrepo is configured
+  template: dest=/etc/yum.repos.d/local.repo src=local.repo.j2
+  become: yes
+
